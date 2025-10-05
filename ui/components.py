@@ -27,10 +27,10 @@ def render_example_questions_popup():
         with col1:
             st.markdown("""
                 <div class="example-section">
-                    <h4>🌡️ Heat Wave Questions</h4>
-                    <div class="question-item">• Worst historical heat waves in my service territory of <strong>PJM</strong>?</div>
-                    <div class="question-item">• Spatial extent of worst heat waves in my service territory of <strong>MRO US</strong>?</div>
-                    <div class="question-item">• What's the twenty worst heatwave event in <strong>ERCOT</strong>?</div>
+                    <h4>☀️ Heat Wave Questions</h4>
+                    <div class="question-item">• What are 10 worst heat wave in my service territory of <strong>PJM</strong>?</div>
+                    <div class="question-item">• What's the spatial extent of 10 worst heatwave in <strong>MRO US</strong>?</div>
+                    <div class="question-item">• What are all historical heatwave in <strong>SPP</strong>?</div>
                 </div>
             """, unsafe_allow_html=True)
         
@@ -86,7 +86,7 @@ def render_sidebar():
     with st.sidebar:
         st.title("About GridCoPilot")
         st.info(
-            "GridCoPilot is a GenAI powered tool that streamlines compliance analysis and visualization for "
+            "GridCoPilot is a GenAI powered tool that streamlines analysis and visualization for "
             "extreme weather events. "
             "It processes heatwave and coldsnap datasets to provide textual and visual insights for transmission planning requirements."
         )
@@ -104,7 +104,7 @@ def render_sidebar():
         
         st.subheader("Quick Links")
         st.markdown("- [Documentation](#)")
-        st.markdown("- [User Guide](#)")
+        st.markdown("- [Dataset](https://doi.org/10.5281/zenodo.15306963)")
         st.markdown("- [FAQ](#)")
 
 def render_chat_message(question, response, response_time, chat_index):
@@ -149,6 +149,7 @@ def render_dashboard_metrics():
     with col2:
         st.metric(label="Counties Analyzed", value="3,100+", delta="Nationwide")
     with col3:
-        st.metric(label="Event Definition Used", value="Def 6", delta="Standards Compliant")
+        st.metric(label="Event Definition Used", value="Def 6", delta="Selected Def")
     st.subheader("Key Analysis Features")
+    st.info("☀️ Heat wave analysis available for extreme high temperature events affecting grid reliability and planning.")
     st.info("❄️ Cold snap analysis available for extreme low temperature events affecting grid reliability and planning.")
