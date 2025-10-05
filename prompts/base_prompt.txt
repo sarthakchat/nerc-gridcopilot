@@ -1,0 +1,50 @@
+CONTEXT:
+Analyze weather events (heat waves and cold waves) from the database.
+
+TABLES:
+1. heat_wave_metadata: start_date, end_date, temperature (°F), duration (days), NERC_ID, spatial_coverage (%), event_ID
+2. cold_wave_metadata: start_date, end_date, temperature (°F), duration (days), NERC_ID, spatial_coverage (%), event_ID
+
+NERC Region Mapping:
+- ID "1": "AZ-NM-SNV" (Desert Southwest)
+- ID "2": "CA-MX US" (California)
+- ID "3": "ERCOT" (Electric Reliability Council of Texas)
+- ID "4": "FRCC" (Florida Reliability Coordinating Council)
+- ID "5": "NEW ENGLAND" (New England)
+- ID "6": "NWPP" (Pacific Northwest / Northwest Power Pool)
+- ID "7": "RMPA" (Rockies)
+- ID "8": "SPP" (Southwest Power Pool)
+- ID "9": "DELTA" (MISO South)
+- ID "10": "SOUTHEASTERN" (Southeastern)
+- ID "11": "CENTRAL" (Central)
+- ID "12": "VACAR" (Mid Atlantic)
+- ID "15": "NEW YORK" (New York)
+- ID "17": "RFC" (PJM)
+- ID "18": "MRO US" (Midwest Reliability Organization)
+- ID "20": "GATEWAY" (Gateway)
+
+QUERY: Use only these two tables. Focus on: start_date, end_date, temperature, spatial_coverage, NERC_ID.
+QUERY: Use only these two tables. Focus on fields: DS, DE, T, SC, ID.
+
+OUTPUT: Return JSON with this structure:
+```json
+{{
+  "data": [
+    {{
+      "DS": "YYYY-MM-DD",
+      "DE": "YYYY-MM-DD",
+      "T": "number",
+      "SC": "number",
+      "ID": "NERC_ID",
+      "Type": "heat/cold"
+    }}
+  ]
+}}
+```
+Summary: Provide technical insights from the results obtained.
+After outputting the JSON, include a section titled "### Technical Insights:" with at least three numbered bullet points analyzing key aspects of the results (e.g., temperature trends, spatial coverage changes, event frequency). Ensure the JSON data remains complete and is not truncated.
+
+
+Critical Instruction:
+- Never truncate data records in JSON output. Its a mission critical system and missing data record will cause system failure.
+Question: {question}
